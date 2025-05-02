@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/energy-dashboard",
+            "outputPath": "dist/energy-dashboard/browser",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
