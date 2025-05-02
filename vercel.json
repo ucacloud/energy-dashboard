@@ -1,8 +1,7 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "angular.json", "use": "@vercel/static-build", "config": { "distDir": "dist/energy-dashboard" } }
-  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/energy-dashboard",
   "routes": [
     {
       "src": "/(.*)",
