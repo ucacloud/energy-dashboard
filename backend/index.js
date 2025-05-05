@@ -2,7 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-app.use(cors());
+const allowedOrigins = ['https://energy-dashboard-lemon.vercel.app'];
+
+app.use(cors({
+  origin: allowedOrigins
+}));
 app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
