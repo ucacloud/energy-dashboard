@@ -2,11 +2,23 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-const allowedOrigins = ['https://energy-dashboard-lemon.vercel.app'];
+const allowedOrigins = [
+  'http://localhost:4200',
+  'https://energy-dashboard-lemon.vercel.app'
+];
 
 app.use(cors({
-  origin: allowedOrigins
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
+
 app.use(express.json());
 
 const PORT = process.env.PORT || 3001;
