@@ -1,0 +1,19 @@
+<div *ngIf="isLoading">Loading settlements...</div>
+<div *ngIf="error">{{ error }}</div>
+
+<table *ngIf="!isLoading && !error">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let settlement of settlements">
+      <td>{{ settlement.id }}</td>
+      <td>{{ settlement.name }}</td>
+      <td>{{ settlement.amount | currency }}</td>
+    </tr>
+  </tbody>
+</table>
