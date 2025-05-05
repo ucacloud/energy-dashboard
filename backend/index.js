@@ -5,6 +5,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:4200',
   'https://energy-dashboard-nzok.onrender.com',
+  'https://energy-dashboard-hgq1ajzuu-ucaclouds-projects.vercel.app',
   'https://energy-dashboard-lemon.vercel.app'
 ];
 
