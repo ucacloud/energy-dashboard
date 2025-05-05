@@ -16,7 +16,7 @@ export class SettlementService {
   // You have to switch these if you want to test locally or on Vercel
   
   // private apiUrl = 'http://localhost:3001/api/settlements'; // Local backend URL
-  private apiUrl = 'https://energy-dashboard-backend-7cbe.onrender.com/api/settlements'; // vercel url
+  private apiUrl = 'https://energy-dashboard-nzok.onrender.com/api/settlements'; // vercel url
 
   constructor(private http: HttpClient) {}
 
