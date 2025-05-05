@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SettlementService, Settlement } from '../../services/settlement.service';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-settlement-list',
@@ -14,7 +15,7 @@ export class SettlementListComponent implements OnInit {
   isLoading = true;
   error: string | null = null;
 
-  constructor(private settlementService: SettlementService) {}
+  private settlementService = inject(SettlementService); 
 
   ngOnInit(): void {
     this.settlementService.getSettlements().subscribe({
