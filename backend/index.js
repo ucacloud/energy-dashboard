@@ -36,6 +36,13 @@ app.get('/api/settlements', (req, res) => {
   ]);
 });
 
+app.get('/api/prices', (req, res) => {
+  res.json([
+    { id: 1, node: 'LZ_SOUTH', price: 28.45, time: '2025-05-05T10:00:00Z' },
+    { id: 2, node: 'LZ_NORTH', price: 30.10, time: '2025-05-05T10:00:00Z' }
+  ]);
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
