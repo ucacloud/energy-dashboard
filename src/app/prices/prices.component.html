@@ -1,1 +1,26 @@
-<p>prices works!</p>
+<h2>Market Prices</h2>
+
+<!-- Loading state -->
+<div *ngIf="isLoading(); else dataTpl">
+  Loading prices…
+</div>
+
+<!-- Data table -->
+<ng-template #dataTpl>
+  <table>
+    <thead>
+      <tr>
+        <th>Node</th>
+        <th>Price ($/MWh)</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of pricesSignal()">
+        <td>{{ p.node }}</td>
+        <td>{{ p.price | number:'1.2-2' }}</td>
+        <td>{{ p.timestamp | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

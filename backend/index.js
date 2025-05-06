@@ -37,10 +37,11 @@ app.get('/api/settlements', (req, res) => {
 });
 
 app.get('/api/prices', (req, res) => {
-  res.json([
-    { id: 1, node: 'LZ_SOUTH', price: 28.45, time: '2025-05-05T10:00:00Z' },
-    { id: 2, node: 'LZ_NORTH', price: 30.10, time: '2025-05-05T10:00:00Z' }
-  ]);
+  const prices = [
+    { id: 1, node: 'LZ_SOUTH', price: 28.45, timestamp: '2025-05-05T10:00:00Z' },
+    { id: 2, node: 'LZ_NORTH', price: 30.10, timestamp: '2025-05-05T10:00:00Z' }
+  ];
+  res.json(prices);
 });
 
 app.listen(PORT, () => {
