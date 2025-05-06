@@ -1,11 +1,9 @@
 <h2>Market Prices</h2>
 
-<!-- Loading state -->
 <div *ngIf="isLoading(); else dataTpl">
   Loading prices…
 </div>
 
-<!-- Data table -->
 <ng-template #dataTpl>
   <table>
     <thead>
@@ -16,7 +14,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let p of pricesSignal()">
+      <!-- Use viewPrices(), which is always a Price[] -->
+      <tr *ngFor="let p of viewPrices()">
         <td>{{ p.node }}</td>
         <td>{{ p.price | number:'1.2-2' }}</td>
         <td>{{ p.timestamp | date:'short' }}</td>

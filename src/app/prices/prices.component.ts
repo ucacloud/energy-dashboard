@@ -1,30 +1,34 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, computed, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgIf, NgFor } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Price, PricesService } from '../services/prices.service';
 
 @Component({
   selector: 'app-prices',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgIf, NgFor],
   templateUrl: './prices.component.html',
   styleUrls: ['./prices.component.css'],
 })
 export class PricesComponent {
-  // 1) Inject the service
+  // Inject the service using standalone-friendly inject()
   private pricesService = inject(PricesService);
 
-  // 2) Create an Observable for the HTTP call
+  // Observable for the HTTP call
   private prices$ = this.pricesService.getPrices();
 
-  // 3) Convert Observable→Signal
-  prices = toSignal(this.prices$, { initialValue: [] as Price[] });
+  // Convert Observable → Signal for template binding
+  pricesSignal = toSignal(this.prices$, { initialValue: [] as Price[] });
 
-  // 4) A loading signal
+  // Derived signal that always returns a Price[] (never undefined)
+  viewPrices: Signal<Price[]> = computed<Price[]>(() => this.pricesSignal());
+
+  // Loading state signal
   isLoading = signal(true);
 
   constructor() {
-    // 5) Subscribe inside the constructor to flip loading off
+    // Subscribe to toggle loading flag when data arrives or errors
     this.prices$.subscribe({
       next: () => this.isLoading.set(false),
       error: () => this.isLoading.set(false),
