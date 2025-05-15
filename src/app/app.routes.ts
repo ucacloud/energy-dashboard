@@ -3,6 +3,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { PricesComponent } from './modules/prices/prices.component';
 import { SettlementListComponent } from './modules/settlement-list/settlement-list.component';
+import { LmpBreakdownComponent } from './modules/lmp-breakdown/lmp-breakdown.component';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
       {
         path: 'settlements',
         component: SettlementListComponent
+      },
+      {
+        path: 'lmp-breakdown',
+        component: LmpBreakdownComponent,
       },
     ],
   },

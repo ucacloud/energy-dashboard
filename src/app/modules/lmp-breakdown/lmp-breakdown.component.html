@@ -1,1 +1,16 @@
-<p>lmp-breakdown works!</p>
+<h2>LMP Breakdown</h2>
+
+<ul *ngIf="lmpData?.length; else loading">
+  <li *ngFor="let item of lmpData">
+    Node: {{ item.node }}<br />
+    Timestamp: {{ item.timestamp }}<br />
+    LMP: {{ item.lmp }}<br />
+    Energy: {{ item.energy }}<br />
+    Congestion: {{ item.congestion }}<br />
+    Loss: {{ item.loss }}
+  </li>
+</ul>
+
+<ng-template #loading>
+  Loading LMP data...
+</ng-template>

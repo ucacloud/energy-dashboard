@@ -13,13 +13,12 @@ export interface Price {
   providedIn: 'root'
 })
 export class PricesService {
-  /** HttpClient injected for standalone usage */
+
   private http = inject(HttpClient);
 
-  /** Your Render backend endpoint */
+  // Render url
   private apiUrl = 'https://energy-dashboard-nzok.onrender.com/api/prices';
 
-  /** Fetch the array of prices */
   getPrices(): Observable<Price[]> {
     return this.http.get<Price[]>(this.apiUrl);
   }
