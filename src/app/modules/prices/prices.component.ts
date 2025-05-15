@@ -2,7 +2,7 @@ import { Component, inject, signal, computed, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgIf, NgFor } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Price, PricesService } from '../services/prices.service';
+import { Price, PricesService } from '../../services/prices.service';
 
 @Component({
   selector: 'app-prices',
