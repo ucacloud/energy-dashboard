@@ -1,0 +1,18 @@
+[
+  {
+    "node": "AEP_P1",
+    "timestamp": "2025-05-15T14:00:00Z",
+    "lmp": 42.37,
+    "energy": 30.50,
+    "congestion": 10.12,
+    "loss": 1.75
+  },
+  {
+    "node": "SPP_NW1",
+    "timestamp": "2025-05-15T14:00:00Z",
+    "lmp": 55.19,
+    "energy": 32.10,
+    "congestion": 20.56,
+    "loss": 2.53
+  }
+]

@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const fs = require('fs');
+const path = require('path');
 
 const allowedOrigins = [
   'http://localhost:4200',
@@ -42,6 +44,17 @@ app.get('/api/prices', (req, res) => {
     { id: 2, node: 'LZ_NORTH', price: 30.10, timestamp: '2025-05-05T10:00:00Z' }
   ];
   res.json(prices);
+});
+
+app.get('/api/lmp', (req, res) => {
+  const filePath = path.join(__dirname, 'data', 'lmp-data.json');
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading LMP data:', err);
+      return res.status(500).json({ error: 'Failed to load LMP data' });
+    }
+    res.json(JSON.parse(data));
+  });
 });
 
 app.listen(PORT, () => {
