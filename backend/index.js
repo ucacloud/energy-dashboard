@@ -46,7 +46,7 @@ app.get('/api/prices', (req, res) => {
   res.json(prices);
 });
 
-app.get('/api/lmp', (req, res) => {
+app.get('/api/lmp-breakdown', (req, res) => {
   const filePath = path.join(__dirname, 'data', 'lmp-data.json');
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
