@@ -16,7 +16,7 @@ export interface LmpData {
 })
 export class LmpService {
   // private dataUrl = '/lmp-data.json'; // local data file in /public
-  private apiUrl = 'http://localhost:3001/api/lmp'; // backend URL
+  private apiUrl = 'https://energy-dashboard-nzok.onrender.com/api/lmp'; // backend URL
 
   constructor(private http: HttpClient) {}
 
