@@ -23,7 +23,7 @@ export const routes: Routes = [
         component: SettlementListComponent
       },
       {
-        path: 'lmp',
+        path: 'lmp-breakdown',
         component: LmpBreakdownComponent,
       },
     ],
