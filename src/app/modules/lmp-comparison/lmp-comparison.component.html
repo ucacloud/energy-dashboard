@@ -1,0 +1,16 @@
+<h2>LMP Comparison (Day-Ahead vs Real-Time)</h2>
+
+<ul *ngIf="comparisonData?.length; else loading">
+  <li *ngFor="let item of comparisonData">
+    Node: {{ item.node }},
+    Time: {{ item.timestamp }},
+    LMP: {{ item.lmp }},
+    Energy: {{ item.energy }},
+    Congestion: {{ item.congestion }},
+    Loss: {{ item.loss }}
+  </li>
+</ul>
+
+<ng-template #loading>
+  <p>Loading comparison data...</p>
+</ng-template>

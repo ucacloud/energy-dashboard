@@ -16,11 +16,17 @@ export interface LmpData {
 })
 export class LmpService {
   // private dataUrl = '/lmp-data.json'; // local data file in /public
-  private apiUrl = 'https://energy-dashboard-nzok.onrender.com/api/lmp'; // backend URL
-
+  private baseUrl = 'https://energy-dashboard-nzok.onrender.com/api/'; // backend base URL
+  private lmpUrl = `${this.baseUrl}/lmp`;
+  private comparisonUrl = `${this.baseUrl}/lmp-comparison`;
+  
   constructor(private http: HttpClient) {}
 
   getLmpData(): Observable<LmpData[]> {
-    return this.http.get<LmpData[]>(this.apiUrl); // to test locally change this.apiUrl to this.dataUrl
+    return this.http.get<LmpData[]>(this.lmpUrl); // to test locally change this.apiUrl to this.dataUrl
   }
+
+  getLmpComparisonData(): Observable<LmpData[]> {
+  return this.http.get<LmpData[]>(this.comparisonUrl);
+}
 }

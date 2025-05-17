@@ -57,6 +57,17 @@ app.get('/api/lmp', (req, res) => {
   });
 });
 
+app.get('/api/lmp-comparison', (req, res) => {
+  const filePath = path.join(__dirname, 'data', 'lmp-comparison.json');
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading LMP Comparison data:', err);
+      return res.status(500).json({ error: 'Failed to load LMP comparison data' });
+    }
+    res.json(JSON.parse(data));
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
