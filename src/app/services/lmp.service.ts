@@ -11,6 +11,13 @@ export interface LmpData {
   loss: number;
 }
 
+export interface LmpComparisonData {
+  timestamp: string;
+  node: string;
+  dayAhead: number;
+  realTime: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -26,7 +33,7 @@ export class LmpService {
     return this.http.get<LmpData[]>(this.lmpUrl); // to test locally change this.apiUrl to this.dataUrl
   }
 
-  getLmpComparisonData(): Observable<LmpData[]> {
-  return this.http.get<LmpData[]>(this.comparisonUrl);
+  getLmpComparisonData(): Observable<LmpComparisonData[]> {
+  return this.http.get<LmpComparisonData[]>(this.comparisonUrl);
 }
 }

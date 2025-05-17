@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LmpService, LmpData } from '../../services/lmp.service';
+import { LmpService, LmpComparisonData } from '../../services/lmp.service';
 
 @Component({
   selector: 'app-lmp-comparison',
@@ -10,7 +10,7 @@ import { LmpService, LmpData } from '../../services/lmp.service';
   styleUrls: ['./lmp-comparison.component.css'],
 })
 export class LmpComparisonComponent implements OnInit {
-  comparisonData: LmpData[] | null = null;
+  comparisonData: LmpComparisonData[] | null = null;
 
   constructor(private lmpService: LmpService) {}
 
