@@ -1,33 +1,17 @@
-<div class="comparison-container">
-  <h2>LMP Comparison (Day-Ahead vs Real-Time)</h2>
+<h2>LMP Comparison (Day-Ahead vs Real-Time)</h2>
 
-  <table *ngIf="comparisonData && comparisonData.length > 0; else loading">
-    <thead>
-      <tr>
-        <th>Node</th>
-        <th>Timestamp</th>
-        <th>Day-Ahead Price</th>
-        <th>Real-Time Price</th>
-        <th>Difference</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of comparisonData">
-        <td>{{ row.node }}</td>
-        <td>{{ row.timestamp | date: 'short' }}</td>
-        <td>{{ row.dayAhead | number: '1.2-2' }}</td>
-        <td>{{ row.realTime | number: '1.2-2' }}</td>
-        <td [ngClass]="{ 
-              'positive': row.realTime - row.dayAhead > 0, 
-              'negative': row.realTime - row.dayAhead < 0 
-            }">
-          {{ (row.realTime - row.dayAhead) | number: '1.2-2' }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <ng-template #loading>
-    <p>Loading LMP comparison data...</p>
-  </ng-template>
-</div>
+<ngx-charts-line-chart
+  [view]="view"
+  [scheme]="'vivid'"
+  [results]="chartData"
+  [xAxis]="true"
+  [yAxis]="true"
+  [legend]="true"
+  [showXAxisLabel]="true"
+  [showYAxisLabel]="true"
+  [xAxisLabel]="'Time'"
+  [yAxisLabel]="'LMP ($/MWh)'"
+  [autoScale]="true"
+  [timeline]="true"
+>
+</ngx-charts-line-chart>
