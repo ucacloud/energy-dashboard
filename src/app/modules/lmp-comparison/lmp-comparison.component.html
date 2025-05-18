@@ -2,7 +2,6 @@
 
 <ngx-charts-line-chart
   [view]="view"
-  [scheme]="'vivid'"
   [results]="chartData"
   [xAxis]="true"
   [yAxis]="true"
@@ -10,8 +9,9 @@
   [showXAxisLabel]="true"
   [showYAxisLabel]="true"
   [xAxisLabel]="'Time'"
-  [yAxisLabel]="'LMP ($/MWh)'"
+  [yAxisLabel]="'Price ($/MWh)'"
   [autoScale]="true"
-  [timeline]="true"
+  [timeline]="false"
+  [xAxisTickFormatting]="xAxisTickFormatting"
 >
 </ngx-charts-line-chart>

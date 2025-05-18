@@ -1,26 +1,50 @@
 [
   {
-    "timestamp": "2025-05-15T00:00:00Z",
+    "timestamp": "2025-05-15T19:00:00Z",
     "node": "AEP_P1",
-    "dayAhead": 45.12,
-    "realTime": 48.73
+    "dayAhead": 50.12,
+    "realTime": 52.34
   },
   {
-    "timestamp": "2025-05-15T01:00:00Z",
+    "timestamp": "2025-05-15T20:00:00Z",
     "node": "AEP_P1",
-    "dayAhead": 44.67,
-    "realTime": 46.15
+    "dayAhead": 49.50,
+    "realTime": 51.20
   },
   {
-    "timestamp": "2025-05-15T02:00:00Z",
-    "node": "SPP_NW1",
-    "dayAhead": 41.55,
-    "realTime": 43.89
+    "timestamp": "2025-05-15T21:00:00Z",
+    "node": "AEP_P1",
+    "dayAhead": 48.80,
+    "realTime": 50.00
   },
   {
-    "timestamp": "2025-05-15T03:00:00Z",
+    "timestamp": "2025-05-15T22:00:00Z",
+    "node": "AEP_P1",
+    "dayAhead": 48.20,
+    "realTime": 49.50
+  },
+  {
+    "timestamp": "2025-05-15T19:00:00Z",
     "node": "SPP_NW1",
-    "dayAhead": 39.25,
-    "realTime": 40.77
+    "dayAhead": 44.10,
+    "realTime": 45.75
+  },
+  {
+    "timestamp": "2025-05-15T20:00:00Z",
+    "node": "SPP_NW1",
+    "dayAhead": 43.80,
+    "realTime": 45.30
+  },
+  {
+    "timestamp": "2025-05-15T21:00:00Z",
+    "node": "SPP_NW1",
+    "dayAhead": 43.25,
+    "realTime": 44.80
+  },
+  {
+    "timestamp": "2025-05-15T22:00:00Z",
+    "node": "SPP_NW1",
+    "dayAhead": 42.90,
+    "realTime": 44.20
   }
 ]
