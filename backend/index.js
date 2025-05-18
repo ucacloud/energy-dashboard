@@ -8,16 +8,20 @@ const allowedOrigins = [
   'http://localhost:4200',
   'https://energy-dashboard-nzok.onrender.com',
   'https://energy-dashboard-hgq1ajzuu-ucaclouds-projects.vercel.app',
-  'https://energy-dashboard-lemon.vercel.app'
+  'https://energy-dashboard-lemon.vercel.app',
+  'https://energy-dashboard-r9eo0put7-ucaclouds-projects.vercel.app'
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
+
+    const isVercelPreview = /^https:\/\/energy-dashboard-.*\.vercel\.app$/.test(origin);
+
+    if (allowedOrigins.includes(origin) || isVercelPreview) {
       return callback(null, true);
     } else {
+      console.warn(`CORS blocked: ${origin}`);
       return callback(new Error('Not allowed by CORS'));
     }
   }

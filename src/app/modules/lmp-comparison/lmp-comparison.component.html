@@ -1,17 +1,18 @@
 <h2>LMP Comparison (Day-Ahead vs Real-Time)</h2>
 
-<ngx-charts-line-chart
-  [view]="view"
-  [results]="chartData"
-  [xAxis]="true"
-  [yAxis]="true"
-  [legend]="true"
-  [showXAxisLabel]="true"
-  [showYAxisLabel]="true"
-  [xAxisLabel]="'Time'"
-  [yAxisLabel]="'Price ($/MWh)'"
-  [autoScale]="true"
-  [timeline]="false"
-  [xAxisTickFormatting]="xAxisTickFormatting"
->
-</ngx-charts-line-chart>
+<div style="width: 100%; height: 100%; max-width: 1000px; margin: auto;">
+  <ngx-charts-line-chart
+    [results]="chartData"
+    [xAxis]="true"
+    [yAxis]="true"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxisLabel]="'Time'"
+    [yAxisLabel]="'Price ($/MWh)'"
+    [autoScale]="true"
+    [timeline]="false"
+    [xAxisTickFormatting]="xAxisTickFormatting"
+  >
+  </ngx-charts-line-chart>
+</div>
