@@ -16,9 +16,14 @@ app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
 
-    const isVercelPreview = /^https:\/\/energy-dashboard-.*\.vercel\.app$/.test(origin);
+    let isVercelDomain = false;
+    try {
+      isVercelDomain = /\.vercel\.app$/.test(new URL(origin).hostname);
+    } catch {
+      return callback(new Error('Invalid origin'));
+    }
 
-    if (allowedOrigins.includes(origin) || isVercelPreview) {
+    if (allowedOrigins.includes(origin) || isVercelDomain) {
       return callback(null, true);
     } else {
       console.warn(`CORS blocked: ${origin}`);
