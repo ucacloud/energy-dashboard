@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 export interface Settlement {
   id: number;
@@ -13,14 +15,15 @@ export interface Settlement {
 })
 export class SettlementService {
 
-  // You have to switch these if you want to test locally or on Vercel
-  
-  // private apiUrl = 'http://localhost:3001/api/settlements'; // Local backend URL
-  private apiUrl = 'https://energy-dashboard-nzok.onrender.com/api/settlements'; // Render url
-
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
+  private apiUrl = `${environment.apiBaseUrl}/settlements`;
 
   getSettlements(): Observable<Settlement[]> {
-    return this.http.get<Settlement[]>(this.apiUrl);
+    return this.http.get<Settlement[]>(this.apiUrl).pipe(
+      catchError(err => {
+        console.error('Error fetching settlements:', err);
+        return of([]);
+      })
+    );
   }
 }

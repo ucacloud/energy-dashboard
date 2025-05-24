@@ -4,29 +4,16 @@ const app = express();
 const fs = require('fs');
 const path = require('path');
 
-const allowedOrigins = [
-  'http://localhost:4200',
-  'https://energy-dashboard-nzok.onrender.com',
-  'https://energy-dashboard-hgq1ajzuu-ucaclouds-projects.vercel.app',
-  'https://energy-dashboard-lemon.vercel.app',
-  'https://energy-dashboard-r9eo0put7-ucaclouds-projects.vercel.app'
-];
-
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-
-    let isVercelDomain = false;
-    try {
-      isVercelDomain = /\.vercel\.app$/.test(new URL(origin).hostname);
-    } catch {
-      return callback(new Error('Invalid origin'));
+    if (!origin) { // Allow requests with no origin (like mobile apps or curl requests)
+      return callback(null, true);
     }
-
-    if (allowedOrigins.includes(origin) || isVercelDomain) {
+    // Allow localhost and any Vercel app domain
+    if (origin === 'http://localhost:4200' || /\.vercel\.app$/.test(new URL(origin).hostname)) {
       return callback(null, true);
     } else {
-      console.warn(`CORS blocked: ${origin}`);
+      console.warn(`CORS blocked for origin: ${origin}`);
       return callback(new Error('Not allowed by CORS'));
     }
   }
@@ -77,6 +64,11 @@ app.get('/api/lmp-comparison', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Export the app for testing, then start the server
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
+
+module.exports = app;

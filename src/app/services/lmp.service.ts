@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 export interface LmpData {
   node: string;
@@ -22,18 +24,25 @@ export interface LmpComparisonData {
   providedIn: 'root',
 })
 export class LmpService {
-  // private dataUrl = '/lmp-data.json'; // local data file in /public
-  private baseUrl = 'https://energy-dashboard-nzok.onrender.com/api'; // backend base URL
-  private lmpUrl = `${this.baseUrl}/lmp`;
-  private comparisonUrl = `${this.baseUrl}/lmp-comparison`;
+  private http = inject(HttpClient);
+  private lmpUrl = `${environment.apiBaseUrl}/lmp`;
+  private comparisonUrl = `${environment.apiBaseUrl}/lmp-comparison`;
   
-  constructor(private http: HttpClient) {}
-
   getLmpData(): Observable<LmpData[]> {
-    return this.http.get<LmpData[]>(this.lmpUrl); // to test locally change this.apiUrl to this.dataUrl
+    return this.http.get<LmpData[]>(this.lmpUrl).pipe(
+      catchError(err => {
+        console.error('Error fetching LMP data:', err);
+        return of([]);
+      })
+    );
   }
 
   getLmpComparisonData(): Observable<LmpComparisonData[]> {
-  return this.http.get<LmpComparisonData[]>(this.comparisonUrl);
+  return this.http.get<LmpComparisonData[]>(this.comparisonUrl).pipe(
+      catchError(err => {
+        console.error('Error fetching LMP comparison data:', err);
+        return of([]);
+      })
+    );
 }
 }

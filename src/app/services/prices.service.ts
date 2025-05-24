@@ -1,6 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 export interface Price {
   id: number;
@@ -16,10 +18,14 @@ export class PricesService {
 
   private http = inject(HttpClient);
 
-  // Render url
-  private apiUrl = 'https://energy-dashboard-nzok.onrender.com/api/prices';
+  private apiUrl = `${environment.apiBaseUrl}/prices`;
 
   getPrices(): Observable<Price[]> {
-    return this.http.get<Price[]>(this.apiUrl);
+    return this.http.get<Price[]>(this.apiUrl).pipe(
+      catchError(err => {
+        console.error('Error fetching prices:', err);
+        return of([]);
+      })
+    );
   }
 }
