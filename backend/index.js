@@ -3,6 +3,7 @@ const cors = require('cors');
 const app = express();
 const fs = require('fs');
 const path = require('path');
+const { spawn } = require('child_process');
 
 const allowedOrigins = [
   'http://localhost:4200',
@@ -74,6 +75,42 @@ app.get('/api/lmp-comparison', (req, res) => {
       return res.status(500).json({ error: 'Failed to load LMP comparison data' });
     }
     res.json(JSON.parse(data));
+  });
+});
+
+app.post('/api/compliance-check', (req, res) => {
+  const logContent = req.body.logContent || '';
+  const pythonProcess = spawn('python', [
+    path.join(__dirname, 'python', 'compliance_checker.py'),
+    '--from-api'
+  ]);
+
+  let result = '';
+  let errorOutput = '';
+
+  pythonProcess.stdin.write(logContent);
+  pythonProcess.stdin.end();
+
+  pythonProcess.stdout.on('data', (data) => {
+    result += data.toString();
+  });
+
+  pythonProcess.stderr.on('data', (data) => {
+    errorOutput += data.toString();
+  });
+
+  pythonProcess.on('close', (code) => {
+    if (code !== 0) {
+      console.error('Python errpr:', errorOutput);
+      return res.status(500).json({ error: 'Python script failed', details: errorOutput });
+    }
+    try {
+      const parsed = JSON.parse(result);
+      res.json(parsed);
+    } catch (err) {
+      console.error('Failed to parse Python output:', err);
+      res.status(500).json({ error: 'Invaid output from script' });
+    }
   });
 });
 
