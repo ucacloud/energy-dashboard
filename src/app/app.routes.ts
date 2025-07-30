@@ -31,6 +31,13 @@ export const routes: Routes = [
         path: 'lmp-comparison',
         component: LmpComparisonComponent,
       },
+      {
+        path: 'compliance-checker',
+        loadComponent: () =>
+          import('./modules/compliance-checker/compliance-checker.component').then(
+            m => m.ComplianceCheckerComponent
+          )
+      },
     ],
   },
   {
