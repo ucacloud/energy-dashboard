@@ -1,0 +1,58 @@
+[
+  {
+    "line_number": 1,
+    "timestamp": "Jul 29 10:02:11",
+    "log_level": "ERROR",
+    "violation_type": "Failed Login",
+    "message": "Jul 29 10:02:11 localhost sshd[1001]: Failed password for invalid user admin from 192.168.1.100 port 54421 ssh2"
+  },
+  {
+    "line_number": 1,
+    "timestamp": "Jul 29 10:02:11",
+    "log_level": "INFO",
+    "violation_type": "SSH Activity",
+    "message": "Jul 29 10:02:11 localhost sshd[1001]: Failed password for invalid user admin from 192.168.1.100 port 54421 ssh2"
+  },
+  {
+    "line_number": 2,
+    "timestamp": "Jul 29 10:03:47",
+    "log_level": "WARNING",
+    "violation_type": "Invalid User",
+    "message": "Jul 29 10:03:47 localhost sshd[1002]: Invalid user test from 192.168.1.101 port 54422"
+  },
+  {
+    "line_number": 2,
+    "timestamp": "Jul 29 10:03:47",
+    "log_level": "INFO",
+    "violation_type": "SSH Activity",
+    "message": "Jul 29 10:03:47 localhost sshd[1002]: Invalid user test from 192.168.1.101 port 54422"
+  },
+  {
+    "line_number": 3,
+    "timestamp": "Jul 29 10:04:22",
+    "log_level": "CRITICAL",
+    "violation_type": "Privilege Escalation",
+    "message": "Jul 29 10:04:22 localhost sudo:    user1 : TTY=pts/0 ; PWD=/home/user1 ; USER=root ; COMMAND=/bin/cat /etc/shadow"
+  },
+  {
+    "line_number": 3,
+    "timestamp": "Jul 29 10:04:22",
+    "log_level": "CRITICAL",
+    "violation_type": "Sensitive File Access",
+    "message": "Jul 29 10:04:22 localhost sudo:    user1 : TTY=pts/0 ; PWD=/home/user1 ; USER=root ; COMMAND=/bin/cat /etc/shadow"
+  },
+  {
+    "line_number": 4,
+    "timestamp": "Jul 29 10:05:01",
+    "log_level": "INFO",
+    "violation_type": "SSH Activity",
+    "message": "Jul 29 10:05:01 localhost sshd[1003]: Accepted password for user2 from 192.168.1.102 port 54423 ssh2"
+  },
+  {
+    "line_number": 6,
+    "timestamp": "Jul 29 10:07:33",
+    "log_level": "INFO",
+    "violation_type": "SSH Activity",
+    "message": "Jul 29 10:07:33 localhost sshd[1004]: Connection reset by 192.168.1.103 port 54424"
+  }
+]

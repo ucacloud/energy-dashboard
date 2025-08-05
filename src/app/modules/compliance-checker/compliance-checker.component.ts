@@ -14,6 +14,33 @@ export class ComplianceCheckerComponent {
   isLoading = false;
   error: string | null = null;
 
+  sampleLog = `
+Jul 23 09:12:44 localhost sshd[3021]: Failed password for root from 172.16.0.3 port 5000 ssh2
+Jul 23 09:13:10 localhost sshd[3022]: Invalid user test from 172.16.0.3 port 5001
+Jul 23 09:14:01 localhost sshd[3023]: Connection reset by 172.16.0.3 port 5002
+Jul 23 09:15:12 localhost sudo:     admin : TTY=pts/1 ; PWD=/home/admin ; USER=root ; COMMAND=/usr/bin/vim /ect/shadow`;
+
+  useSampleLog(): void {
+    this.isLoading = true;
+    this.error = null;
+    this.violations = [];
+
+    this.http
+      .post<any>('/api/compliance-check', { logContent: this.sampleLog })
+      .subscribe({
+        next: (response) => {
+          console.log('Sample API Response:', response);
+          this.violations = response || [];
+          this.isLoading = false;
+        },
+        error: (err) => {
+          console.error(err);
+          this.error = 'An error occurred while processing the sample log.';
+          this.isLoading = false;
+        },
+      });
+  }
+
   constructor(private http: HttpClient) {}
 
   onFileSelected(event: Event): void {
