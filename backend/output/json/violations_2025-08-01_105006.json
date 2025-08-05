@@ -1,0 +1,51 @@
+[
+  {
+    "line_number": 1,
+    "timestamp": "Jul 22 13:01:32",
+    "violation_type": "Failed Login",
+    "log_level": "ERROR",
+    "description": "Jul 22 13:01:32 localhost sshd[2049]: Failed password for invalid user admin from 192.168.1.5 port 2222 ssh2"
+  },
+  {
+    "line_number": 1,
+    "timestamp": "Jul 22 13:01:32",
+    "violation_type": "SSH Activity",
+    "log_level": "INFO",
+    "description": "Jul 22 13:01:32 localhost sshd[2049]: Failed password for invalid user admin from 192.168.1.5 port 2222 ssh2"
+  },
+  {
+    "line_number": 2,
+    "timestamp": "Jul 22 13:01:34",
+    "violation_type": "Invalid User",
+    "log_level": "WARNING",
+    "description": "Jul 22 13:01:34 localhost sshd[2049]: Invalid user guest from 192.168.1.5 port 2222"
+  },
+  {
+    "line_number": 2,
+    "timestamp": "Jul 22 13:01:34",
+    "violation_type": "SSH Activity",
+    "log_level": "INFO",
+    "description": "Jul 22 13:01:34 localhost sshd[2049]: Invalid user guest from 192.168.1.5 port 2222"
+  },
+  {
+    "line_number": 3,
+    "timestamp": "Jul 22 13:02:15",
+    "violation_type": "Privilege Escalation",
+    "log_level": "CRITICAL",
+    "description": "Jul 22 13:02:15 localhost sudo:     user1 : TTY=pts/0 ; PWD=/home/user1 ; USER=root ; COMMAND=/bin/less /etc/shadow"
+  },
+  {
+    "line_number": 4,
+    "timestamp": "Jul 22 13:03:10",
+    "violation_type": "SSH Activity",
+    "log_level": "INFO",
+    "description": "Jul 22 13:03:10 localhost sshd[2050]: Connection closed by authenticating user root 192.168.1.5 port 2222"
+  },
+  {
+    "line_number": 5,
+    "timestamp": "Jul 22 13:04:02",
+    "violation_type": "SSH Activity",
+    "log_level": "INFO",
+    "description": "Jul 22 13:04:02 localhost sshd[2051]: Accepted password for user2 from 10.0.0.1 port 443 ssh2"
+  }
+]

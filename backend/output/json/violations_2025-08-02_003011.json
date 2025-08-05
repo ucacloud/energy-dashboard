@@ -1,0 +1,51 @@
+[
+  {
+    "line_number": 1,
+    "timestamp": "Jul 23 09:12:44",
+    "log_level": "ERROR",
+    "violation_type": "Failed Login",
+    "message": "Jul 23 09:12:44 localhost sshd[3021]: Failed password for root from 172.16.0.3 port 5000 ssh2"
+  },
+  {
+    "line_number": 1,
+    "timestamp": "Jul 23 09:12:44",
+    "log_level": "INFO",
+    "violation_type": "SSH Activity",
+    "message": "Jul 23 09:12:44 localhost sshd[3021]: Failed password for root from 172.16.0.3 port 5000 ssh2"
+  },
+  {
+    "line_number": 2,
+    "timestamp": "Jul 23 09:13:10",
+    "log_level": "WARNING",
+    "violation_type": "Invalid User",
+    "message": "Jul 23 09:13:10 localhost sshd[3022]: Invalid user test from 172.16.0.3 port 5001"
+  },
+  {
+    "line_number": 2,
+    "timestamp": "Jul 23 09:13:10",
+    "log_level": "INFO",
+    "violation_type": "SSH Activity",
+    "message": "Jul 23 09:13:10 localhost sshd[3022]: Invalid user test from 172.16.0.3 port 5001"
+  },
+  {
+    "line_number": 3,
+    "timestamp": "Jul 23 09:14:01",
+    "log_level": "INFO",
+    "violation_type": "SSH Activity",
+    "message": "Jul 23 09:14:01 localhost sshd[3023]: Connection reset by 172.16.0.3 port 5002"
+  },
+  {
+    "line_number": 4,
+    "timestamp": "Jul 23 09:15:12",
+    "log_level": "CRITICAL",
+    "violation_type": "Privilege Escalation",
+    "message": "Jul 23 09:15:12 localhost sudo:     admin : TTY=pts/1 ; PWD=/home/admin ; USER=root ; COMMAND=/usr/bin/vim /etc/shadow"
+  },
+  {
+    "line_number": 4,
+    "timestamp": "Jul 23 09:15:12",
+    "log_level": "CRITICAL",
+    "violation_type": "Sensitive File Access",
+    "message": "Jul 23 09:15:12 localhost sudo:     admin : TTY=pts/1 ; PWD=/home/admin ; USER=root ; COMMAND=/usr/bin/vim /etc/shadow"
+  }
+]

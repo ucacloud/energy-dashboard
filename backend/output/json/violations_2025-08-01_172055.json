@@ -1,0 +1,51 @@
+[
+  {
+    "line_number": 1,
+    "timestamp": "Jul 23 09:12:44",
+    "violation_type": "Failed Login",
+    "log_level": "ERROR",
+    "description": "Jul 23 09:12:44 localhost sshd[3021]: Failed password for root from 172.16.0.3 port 5000 ssh2"
+  },
+  {
+    "line_number": 1,
+    "timestamp": "Jul 23 09:12:44",
+    "violation_type": "SSH Activity",
+    "log_level": "INFO",
+    "description": "Jul 23 09:12:44 localhost sshd[3021]: Failed password for root from 172.16.0.3 port 5000 ssh2"
+  },
+  {
+    "line_number": 2,
+    "timestamp": "Jul 23 09:13:10",
+    "violation_type": "Invalid User",
+    "log_level": "WARNING",
+    "description": "Jul 23 09:13:10 localhost sshd[3022]: Invalid user test from 172.16.0.3 port 5001"
+  },
+  {
+    "line_number": 2,
+    "timestamp": "Jul 23 09:13:10",
+    "violation_type": "SSH Activity",
+    "log_level": "INFO",
+    "description": "Jul 23 09:13:10 localhost sshd[3022]: Invalid user test from 172.16.0.3 port 5001"
+  },
+  {
+    "line_number": 3,
+    "timestamp": "Jul 23 09:14:01",
+    "violation_type": "Connection Reset",
+    "log_level": "WARNING",
+    "description": "Jul 23 09:14:01 localhost sshd[3023]: Connection reset by 172.16.0.3 port 5002"
+  },
+  {
+    "line_number": 3,
+    "timestamp": "Jul 23 09:14:01",
+    "violation_type": "SSH Activity",
+    "log_level": "INFO",
+    "description": "Jul 23 09:14:01 localhost sshd[3023]: Connection reset by 172.16.0.3 port 5002"
+  },
+  {
+    "line_number": 4,
+    "timestamp": "Jul 23 09:15:12",
+    "violation_type": "Privilege Escalation",
+    "log_level": "CRITICAL",
+    "description": "Jul 23 09:15:12 localhost sudo:     admin : TTY=pts/1 ; PWD=/home/admin ; USER=root ; COMMAND=/usr/bin/vim /ect/shadow"
+  }
+]

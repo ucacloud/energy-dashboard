@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { JsonPipe, NgIf, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-compliance-checker',
   standalone: true,
-  imports: [JsonPipe, NgIf, NgFor],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './compliance-checker.component.html',
-  styleUrl: './compliance-checker.component.css'
 })
 export class ComplianceCheckerComponent {
-  violations: any[] = [];
   selectedFile: File | null = null;
+  violations: any[] = [];
   isLoading = false;
-  error = '';
+  error: string | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -28,23 +27,30 @@ export class ComplianceCheckerComponent {
     if (!this.selectedFile) return;
 
     const reader = new FileReader();
+    this.isLoading = true;
+    this.error = null;
+    this.violations = [];
+
     reader.onload = () => {
       const logContent = reader.result as string;
 
-      this.isLoading = true;
-      this.error = '';
-      this.http
-        .post<any>('/api/compliance-check', { log: logContent })
-        .subscribe({
-          next: (response) => {
-            this.violations = response.violations || [];
-            this.isLoading = false;
-          },
-          error: (err) => {
-            this.error = 'Failed to analyze log file.';
-            this.isLoading = false;
-          },
-        });
+      this.http.post<any>('/api/compliance-check', { logContent }).subscribe({
+        next: (response) => {
+          console.log('API Response:', response);
+          this.violations = response || [];
+          this.isLoading = false;
+        },
+        error: (err) => {
+          console.error(err);
+          this.error = 'An error occurred while processing the log file.';
+          this.isLoading = false;
+        },
+      });
+    };
+
+    reader.onerror = () => {
+      this.error = 'Failed to read the file.';
+      this.isLoading = false;
     };
 
     reader.readAsText(this.selectedFile);
