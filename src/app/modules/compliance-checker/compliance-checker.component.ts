@@ -8,6 +8,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, HttpClientModule],
   templateUrl: './compliance-checker.component.html',
 })
+
+export const environment = {
+  production: true,
+  apiUrl: 'https://energy-dashboard-nzok.onrender.com/api' // ← your real Render URL here
+};
+
 export class ComplianceCheckerComponent {
   selectedFile: File | null = null;
   violations: any[] = [];
@@ -26,7 +32,7 @@ Jul 23 09:15:12 localhost sudo:     admin : TTY=pts/1 ; PWD=/home/admin ; USER=r
     this.violations = [];
 
     this.http
-      .post<any>('/api/compliance-check', { logContent: this.sampleLog })
+      .post<any>(`${environment.apiUrl}/compliance-checker`, { logContent: this.sampleLog })
       .subscribe({
         next: (response) => {
           console.log('Sample API Response:', response);
