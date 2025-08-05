@@ -10,7 +10,7 @@ export class ComplianceCheckerService {
 
   constructor(private http: HttpClient) {}
 
-  checkCompliance(logText: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl, { log: logText });
+  checkCompliance(logContent: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl, { logContent });
   }
 }
