@@ -1,10 +1,10 @@
 <div class="layout">
-  <header>
+  <header class="navbar">
     <h1>Energy Market Dashboard</h1>
   </header>
 
-  <div class="content">
-    <aside>
+  <div class="main-container">
+    <aside class="sidebar">
       <nav>
         <ul>
           <li><a routerLink="/">Dashboard</a></li>
@@ -13,12 +13,11 @@
           <li><a routerLink="/lmp-breakdown">LMP Breakdown</a></li>
           <li><a routerLink="/lmp-comparison">LMP Comparison</a></li>
           <li><a routerLink="/compliance-checker">Compliance Checker</a></li>
-          <!-- Add more links here as needed -->
         </ul>
       </nav>
     </aside>
 
-    <main>
+    <main class="content">
       <router-outlet></router-outlet>
     </main>
   </div>
