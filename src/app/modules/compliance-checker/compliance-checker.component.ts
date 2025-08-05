@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ComplianceCheckerService } from '../../services/compliance-checker.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -8,11 +9,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, HttpClientModule],
   templateUrl: './compliance-checker.component.html',
 })
-
-export const environment = {
-  production: true,
-  apiUrl: 'https://energy-dashboard-nzok.onrender.com/api' // ← your real Render URL here
-};
 
 export class ComplianceCheckerComponent {
   selectedFile: File | null = null;
@@ -31,8 +27,7 @@ Jul 23 09:15:12 localhost sudo:     admin : TTY=pts/1 ; PWD=/home/admin ; USER=r
     this.error = null;
     this.violations = [];
 
-    this.http
-      .post<any>(`${environment.apiUrl}/compliance-checker`, { logContent: this.sampleLog })
+    this.complianceCheckerService.checkCompliance(this.sampleLog)
       .subscribe({
         next: (response) => {
           console.log('Sample API Response:', response);
@@ -47,7 +42,7 @@ Jul 23 09:15:12 localhost sudo:     admin : TTY=pts/1 ; PWD=/home/admin ; USER=r
       });
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private complianceCheckerService: ComplianceCheckerService) {}
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -67,7 +62,7 @@ Jul 23 09:15:12 localhost sudo:     admin : TTY=pts/1 ; PWD=/home/admin ; USER=r
     reader.onload = () => {
       const logContent = reader.result as string;
 
-      this.http.post<any>('/api/compliance-check', { logContent }).subscribe({
+      this.complianceCheckerService.checkCompliance(logContent).subscribe({
         next: (response) => {
           console.log('API Response:', response);
           this.violations = response || [];
