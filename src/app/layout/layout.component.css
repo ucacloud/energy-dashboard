@@ -62,3 +62,43 @@
   overflow-y: auto;
   background-color: #fff;
 }
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-top: 1px solid #ddd;
+    background-color: #f9f9f9;
+    padding: 0.5rem 1rem;
+  }
+
+  .sidebar nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .sidebar nav li {
+    margin: 0.5rem 0;
+  }
+
+  .sidebar nav a {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .navbar {
+    font-size: 1.2rem;
+    padding: 0.75rem 1rem;
+    text-align: center;
+  }
+}
